@@ -1,38 +1,31 @@
 ﻿l_english:
  # Interaction
  send_gold_to_player_interaction:0 "Send Gold"
- send_gold_to_player_interaction_desc:0 "Send a specified amount of gold to this character."
+ send_gold_to_player_interaction_desc:0 "Send gold to this character. Select an amount and confirm to transfer."
+ 
+ # Validation
+ send_gold_must_have_gold:0 "You must have at least 1 gold"
  
  # Game Rules
- send_gold_ai_rule:0 "Send Gold Target Restriction"
+ send_gold_ai_rule:0 "Send Gold: Target Restriction"
  send_gold_ai_rule_desc:0 "Determines who can receive gold through the Send Gold interaction."
- send_gold_ai_rule_players_only:0 "Players Only"
- send_gold_ai_rule_players_only_desc:0 "Gold can only be sent to characters controlled by human players."
- send_gold_ai_rule_allow_ai:0 "All Characters"
- send_gold_ai_rule_allow_ai_desc:0 "Gold can be sent to any character, including AI-controlled ones."
+ send_gold_players_only_desc:0 "Gold can only be sent to characters controlled by human players."
+ send_gold_allow_ai_desc:0 "Gold can be sent to any character, including AI-controlled ones."
  
- # Window
- SEND_GOLD_WINDOW_TITLE:0 "Send Gold"
- SEND_GOLD_TO_LABEL:0 "Send to:"
- SEND_GOLD_YOUR_GOLD:0 "Your Gold:"
- SEND_GOLD_AMOUNT_LABEL:0 "Amount to Send:"
- SEND_GOLD_MIN:0 "Min"
- SEND_GOLD_MAX:0 "Max"
- SEND_GOLD_CONFIRM:0 "Send"
- SEND_GOLD_CANCEL:0 "Cancel"
- 
- # Tooltips
- SEND_GOLD_DECREASE_100_TT:0 "Decrease by 100"
- SEND_GOLD_DECREASE_10_TT:0 "Decrease by 10"
- SEND_GOLD_DECREASE_1_TT:0 "Decrease by 1"
- SEND_GOLD_INCREASE_1_TT:0 "Increase by 1"
- SEND_GOLD_INCREASE_10_TT:0 "Increase by 10"
- SEND_GOLD_INCREASE_100_TT:0 "Increase by 100"
- SEND_GOLD_MIN_TT:0 "Set to minimum (1 gold)"
- SEND_GOLD_MAX_TT:0 "Set to maximum (all your gold)"
+ # Options
+ send_gold_opt_1:0 "Send 1 Gold"
+ send_gold_opt_5:0 "Send 5 Gold"
+ send_gold_opt_10:0 "Send 10 Gold"
+ send_gold_opt_25:0 "Send 25 Gold"
+ send_gold_opt_50:0 "Send 50 Gold"
+ send_gold_opt_100:0 "Send 100 Gold"
+ send_gold_opt_250:0 "Send 250 Gold"
+ send_gold_opt_500:0 "Send 500 Gold"
+ send_gold_opt_1000:0 "Send 1,000 Gold"
+ send_gold_opt_2500:0 "Send 2,500 Gold"
+ send_gold_opt_5000:0 "Send 5,000 Gold"
+ send_gold_opt_all:0 "Send All Gold"
  
  # Notifications
  send_gold_sent_toast:0 "Gold Sent!"
- send_gold_sent_tt:0 "You have sent gold to [recipient.GetFirstNameNoTooltip]."
  send_gold_received_toast:0 "Gold Received!"
- send_gold_received_tt:0 "[sender.GetFirstNameNoTooltip] has sent you gold!"

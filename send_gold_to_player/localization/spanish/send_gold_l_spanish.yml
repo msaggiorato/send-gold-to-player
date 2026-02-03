@@ -1,38 +1,31 @@
 ﻿l_spanish:
  # Interaction
  send_gold_to_player_interaction:0 "Enviar Oro"
- send_gold_to_player_interaction_desc:0 "Envía una cantidad específica de oro a este personaje."
+ send_gold_to_player_interaction_desc:0 "Envía oro a este personaje. Selecciona una cantidad y confirma para transferir."
+ 
+ # Validation
+ send_gold_must_have_gold:0 "Debes tener al menos 1 de oro"
  
  # Game Rules
- send_gold_ai_rule:0 "Restricción de Destino para Enviar Oro"
- send_gold_ai_rule_desc:0 "Determina quién puede recibir oro a través de la interacción Enviar Oro."
- send_gold_ai_rule_players_only:0 "Solo Jugadores"
- send_gold_ai_rule_players_only_desc:0 "El oro solo puede enviarse a personajes controlados por jugadores humanos."
- send_gold_ai_rule_allow_ai:0 "Todos los Personajes"
- send_gold_ai_rule_allow_ai_desc:0 "El oro puede enviarse a cualquier personaje, incluyendo los controlados por IA."
+ send_gold_ai_rule:0 "Enviar Oro: Restricción de Destino"
+ send_gold_ai_rule_desc:0 "Determina quién puede recibir oro mediante la interacción Enviar Oro."
+ send_gold_players_only_desc:0 "El oro solo puede enviarse a personajes controlados por jugadores humanos."
+ send_gold_allow_ai_desc:0 "El oro puede enviarse a cualquier personaje, incluyendo los controlados por IA."
  
- # Window
- SEND_GOLD_WINDOW_TITLE:0 "Enviar Oro"
- SEND_GOLD_TO_LABEL:0 "Enviar a:"
- SEND_GOLD_YOUR_GOLD:0 "Tu Oro:"
- SEND_GOLD_AMOUNT_LABEL:0 "Cantidad a Enviar:"
- SEND_GOLD_MIN:0 "Mín"
- SEND_GOLD_MAX:0 "Máx"
- SEND_GOLD_CONFIRM:0 "Enviar"
- SEND_GOLD_CANCEL:0 "Cancelar"
- 
- # Tooltips
- SEND_GOLD_DECREASE_100_TT:0 "Disminuir en 100"
- SEND_GOLD_DECREASE_10_TT:0 "Disminuir en 10"
- SEND_GOLD_DECREASE_1_TT:0 "Disminuir en 1"
- SEND_GOLD_INCREASE_1_TT:0 "Aumentar en 1"
- SEND_GOLD_INCREASE_10_TT:0 "Aumentar en 10"
- SEND_GOLD_INCREASE_100_TT:0 "Aumentar en 100"
- SEND_GOLD_MIN_TT:0 "Establecer al mínimo (1 oro)"
- SEND_GOLD_MAX_TT:0 "Establecer al máximo (todo tu oro)"
+ # Options
+ send_gold_opt_1:0 "Enviar 1 Oro"
+ send_gold_opt_5:0 "Enviar 5 Oro"
+ send_gold_opt_10:0 "Enviar 10 Oro"
+ send_gold_opt_25:0 "Enviar 25 Oro"
+ send_gold_opt_50:0 "Enviar 50 Oro"
+ send_gold_opt_100:0 "Enviar 100 Oro"
+ send_gold_opt_250:0 "Enviar 250 Oro"
+ send_gold_opt_500:0 "Enviar 500 Oro"
+ send_gold_opt_1000:0 "Enviar 1.000 Oro"
+ send_gold_opt_2500:0 "Enviar 2.500 Oro"
+ send_gold_opt_5000:0 "Enviar 5.000 Oro"
+ send_gold_opt_all:0 "Enviar Todo el Oro"
  
  # Notifications
  send_gold_sent_toast:0 "¡Oro Enviado!"
- send_gold_sent_tt:0 "Has enviado oro a [recipient.GetFirstNameNoTooltip]."
  send_gold_received_toast:0 "¡Oro Recibido!"
- send_gold_received_tt:0 "¡[sender.GetFirstNameNoTooltip] te ha enviado oro!"
