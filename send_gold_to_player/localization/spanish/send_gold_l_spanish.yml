@@ -1,31 +1,13 @@
 ﻿l_spanish:
- # Interaction
  send_gold_to_player_interaction:0 "Enviar Oro"
- send_gold_to_player_interaction_desc:0 "Envía oro a este personaje. Selecciona una cantidad y confirma para transferir."
- 
- # Validation
- send_gold_must_have_gold:0 "Debes tener al menos 1 de oro"
- 
- # Game Rules
- send_gold_ai_rule:0 "Enviar Oro: Restricción de Destino"
- send_gold_ai_rule_desc:0 "Determina quién puede recibir oro mediante la interacción Enviar Oro."
- send_gold_players_only_desc:0 "El oro solo puede enviarse a personajes controlados por jugadores humanos."
- send_gold_allow_ai_desc:0 "El oro puede enviarse a cualquier personaje, incluyendo los controlados por IA."
- 
- # Options
- send_gold_opt_1:0 "Enviar 1 Oro"
- send_gold_opt_5:0 "Enviar 5 Oro"
- send_gold_opt_10:0 "Enviar 10 Oro"
- send_gold_opt_25:0 "Enviar 25 Oro"
- send_gold_opt_50:0 "Enviar 50 Oro"
- send_gold_opt_100:0 "Enviar 100 Oro"
- send_gold_opt_250:0 "Enviar 250 Oro"
- send_gold_opt_500:0 "Enviar 500 Oro"
- send_gold_opt_1000:0 "Enviar 1.000 Oro"
- send_gold_opt_2500:0 "Enviar 2.500 Oro"
- send_gold_opt_5000:0 "Enviar 5.000 Oro"
- send_gold_opt_all:0 "Enviar Todo el Oro"
- 
- # Notifications
- send_gold_sent_toast:0 "¡Oro Enviado!"
- send_gold_received_toast:0 "¡Oro Recibido!"
+ send_gold_to_player_interaction_desc:0 "Envía oro a otro jugador."
+ send_gold_option_1:0 "Enviar 1 Oro"
+ send_gold_option_5:0 "Enviar 5 Oro"
+ send_gold_option_10:0 "Enviar 10 Oro"
+ send_gold_option_25:0 "Enviar 25 Oro"
+ send_gold_option_50:0 "Enviar 50 Oro"
+ send_gold_option_100:0 "Enviar 100 Oro"
+ send_gold_option_250:0 "Enviar 250 Oro"
+ send_gold_option_500:0 "Enviar 500 Oro"
+ send_gold_option_1000:0 "Enviar 1000 Oro"
+ send_gold_option_all:0 "Enviar TODO el Oro"

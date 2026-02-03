@@ -1,21 +1,6 @@
-# Scripted effects for Send Gold mod
-# Compatible with CK3 1.17.x
-
-send_gold_effect = {
-	remove_short_term_gold = $AMOUNT$
+﻿send_gold_to_target_effect = {
+	remove_short_term_gold = $GOLD_AMOUNT$
 	scope:recipient = {
-		add_gold = $AMOUNT$
-	}
-	# Notify sender
-	send_interface_toast = {
-		title = send_gold_sent_toast
-		left_icon = scope:recipient
-	}
-	# Notify recipient
-	scope:recipient = {
-		send_interface_toast = {
-			title = send_gold_received_toast
-			left_icon = scope:actor
-		}
+		add_gold = $GOLD_AMOUNT$
 	}
 }
