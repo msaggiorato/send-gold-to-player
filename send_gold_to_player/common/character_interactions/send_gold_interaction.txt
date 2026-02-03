@@ -4,7 +4,7 @@
 send_gold_to_player_interaction = {
 	category = interaction_category_friendly
 	desc = send_gold_to_player_interaction_desc
-	icon = gold
+	icon = icon_gold
 	
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
@@ -121,7 +121,7 @@ send_gold_to_player_interaction = {
 send_gold_cover_debt_interaction = {
 	category = interaction_category_friendly
 	desc = send_gold_cover_debt_interaction_desc
-	icon = gold
+	icon = icon_gold
 	
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
