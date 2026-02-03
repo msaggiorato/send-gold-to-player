@@ -1,0 +1,47 @@
+=====================================================
+INSTRUCCIONES DE INSTALACION - Send Gold to Player
+=====================================================
+
+UBICACION DE INSTALACION:
+Documents\Paradox Interactive\Crusader Kings III\mod\
+
+PASOS:
+
+1. Abre la carpeta:
+   Documents\Paradox Interactive\Crusader Kings III\mod\
+
+2. Copia AMBOS elementos de este ZIP a esa carpeta:
+   
+   - send_gold_to_player.mod    (archivo)
+   - send_gold_to_player\       (carpeta)
+
+3. La estructura final debe verse asi:
+
+   Documents\Paradox Interactive\Crusader Kings III\mod\
+   |
+   |-- send_gold_to_player.mod         <-- ARCHIVO en la raiz
+   |
+   +-- send_gold_to_player\            <-- CARPETA
+       |-- descriptor.mod
+       |-- README.txt
+       +-- common\
+       |   +-- character_interactions\
+       |   +-- scripted_effects\
+       +-- localization\
+           +-- english\
+           +-- spanish\
+
+4. Abre el Paradox Launcher
+
+5. Ve a "Playsets" (Lotes de juego)
+
+6. El mod "Send Gold to Player" deberia aparecer en la lista
+
+7. Activalo y guardalo en tu playset
+
+IMPORTANTE PARA MULTIJUGADOR:
+- TODOS los jugadores deben tener el mod instalado
+- TODOS deben tener la misma version
+- El host debe tener el mod activo en su playset
+
+=====================================================
