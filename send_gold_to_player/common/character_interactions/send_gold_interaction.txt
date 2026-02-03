@@ -4,7 +4,6 @@
 	
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
-		scope:recipient = { is_ai = no }
 	}
 	
 	is_valid_showing_failures_only = {
