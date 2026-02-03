@@ -1,109 +1,16 @@
 ﻿send_gold_to_player_interaction = {
 	category = interaction_category_friendly
-	desc = send_gold_to_player_interaction_desc
-	
-	is_shown = {
-		NOT = { scope:actor = scope:recipient }
-	}
-	
-	is_valid_showing_failures_only = {
-		scope:actor = {
-			gold >= 1
-		}
-	}
-	
-	send_option = {
-		flag = send_gold_1
-		localization = send_gold_option_1
-	}
-	send_option = {
-		flag = send_gold_5
-		localization = send_gold_option_5
-	}
-	send_option = {
-		flag = send_gold_10
-		localization = send_gold_option_10
-	}
-	send_option = {
-		flag = send_gold_25
-		localization = send_gold_option_25
-	}
-	send_option = {
-		flag = send_gold_50
-		localization = send_gold_option_50
-	}
-	send_option = {
-		flag = send_gold_100
-		localization = send_gold_option_100
-	}
-	send_option = {
-		flag = send_gold_250
-		localization = send_gold_option_250
-	}
-	send_option = {
-		flag = send_gold_500
-		localization = send_gold_option_500
-	}
-	send_option = {
-		flag = send_gold_1000
-		localization = send_gold_option_1000
-	}
-	send_option = {
-		flag = send_gold_all
-		localization = send_gold_option_all
-	}
 	
 	on_accept = {
-		if = {
-			limit = { scope:send_gold_1 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 1 } }
+		scope:actor = {
+			remove_short_term_gold = 100
 		}
-		else_if = {
-			limit = { scope:send_gold_5 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 5 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_10 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 10 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_25 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 25 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_50 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 50 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_100 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 100 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_250 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 250 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_500 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 500 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_1000 = yes }
-			scope:actor = { send_gold_to_target_effect = { GOLD_AMOUNT = 1000 } }
-		}
-		else_if = {
-			limit = { scope:send_gold_all = yes }
-			scope:actor = {
-				save_temporary_scope_value_as = {
-					name = gold_to_send
-					value = gold
-				}
-				remove_short_term_gold = scope:gold_to_send
-				scope:recipient = {
-					add_gold = scope:gold_to_send
-				}
-			}
+		scope:recipient = {
+			add_gold = 100
 		}
 	}
 	
-	auto_accept = yes
+	auto_accept = {
+		always = yes
+	}
 }

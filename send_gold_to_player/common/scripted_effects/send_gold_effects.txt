@@ -1,6 +1,0 @@
-﻿send_gold_to_target_effect = {
-	remove_short_term_gold = $GOLD_AMOUNT$
-	scope:recipient = {
-		add_gold = $GOLD_AMOUNT$
-	}
-}
