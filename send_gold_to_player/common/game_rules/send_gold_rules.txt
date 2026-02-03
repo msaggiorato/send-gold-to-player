@@ -1,0 +1,17 @@
+# Game Rules for Send Gold to Player mod
+
+send_gold_ai_rule = {
+	name = send_gold_ai_rule
+	desc = send_gold_ai_rule_desc
+	default = players_only
+	
+	option = {
+		name = players_only
+		desc = send_gold_ai_rule_players_only_desc
+	}
+	
+	option = {
+		name = allow_ai
+		desc = send_gold_ai_rule_allow_ai_desc
+	}
+}

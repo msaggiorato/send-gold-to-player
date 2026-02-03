@@ -1,0 +1,245 @@
+window = {
+	name = "send_gold_window"
+	parentanchor = center
+	position = { 0 0 }
+	size = { 400 340 }
+	layer = middle
+	movable = yes
+	
+	using = Window_Background
+	using = Window_Decoration
+	
+	datacontext = "[GetPlayer]"
+	
+	visible = "[And(GetPlayer.MakeScope.Var('send_gold_recipient').IsSet, GetScriptedGui('send_gold_window').IsShown(GuiScope.SetRoot(GetPlayer.MakeScope).End))]"
+	
+	state = {
+		name = _show
+		using = Animation_FadeIn_Quick
+	}
+	
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+	}
+	
+	vbox = {
+		margin = { 15 10 }
+		spacing = 10
+		
+		# Header
+		hbox = {
+			layoutpolicy_horizontal = expanding
+			
+			text_single = {
+				text = "SEND_GOLD_WINDOW_TITLE"
+				default_format = "#high"
+				align = center
+				fontsize = 22
+				layoutpolicy_horizontal = expanding
+			}
+		}
+		
+		divider_light = {
+			layoutpolicy_horizontal = expanding
+		}
+		
+		# Recipient section
+		hbox = {
+			spacing = 10
+			
+			text_single = {
+				text = "SEND_GOLD_TO_LABEL"
+				align = nobaseline
+			}
+			
+			portrait_head_small = {
+				datacontext = "[GetPlayer.MakeScope.Var('send_gold_recipient').GetCharacter]"
+				visible = "[Character.IsValid]"
+			}
+			
+			text_single = {
+				datacontext = "[GetPlayer.MakeScope.Var('send_gold_recipient').GetCharacter]"
+				text = "[Character.GetName]"
+				default_format = "#high"
+				fontsize = 18
+			}
+		}
+		
+		# Your gold display
+		hbox = {
+			spacing = 8
+			margin_top = 5
+			
+			background = {
+				using = Background_Area_Dark
+				margin = { 15 8 }
+			}
+			
+			text_single = {
+				text = "SEND_GOLD_YOUR_GOLD"
+			}
+			
+			text_single = {
+				text = "[GetPlayer.GetGold|0]"
+				default_format = "#high;bold"
+				fontsize = 18
+			}
+			
+			icon = {
+				size = { 28 28 }
+				texture = "gfx/interface/icons/icon_gold.dds"
+			}
+		}
+		
+		spacer = {
+			size = { 10 10 }
+		}
+		
+		# Amount label
+		text_single = {
+			text = "SEND_GOLD_AMOUNT_LABEL"
+			fontsize = 16
+		}
+		
+		# Amount controls
+		hbox = {
+			spacing = 5
+			
+			# -100 button
+			button_standard = {
+				size = { 55 40 }
+				text = "-100"
+				default_format = "#low"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_decrease_100')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_decrease_100_valid')]"
+				tooltip = "SEND_GOLD_DECREASE_100_TT"
+			}
+			
+			# -10 button
+			button_standard = {
+				size = { 50 40 }
+				text = "-10"
+				default_format = "#low"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_decrease_10')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_decrease_10_valid')]"
+				tooltip = "SEND_GOLD_DECREASE_10_TT"
+			}
+			
+			# -1 button
+			button_standard = {
+				size = { 45 40 }
+				text = "-1"
+				default_format = "#low"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_decrease_1')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_decrease_1_valid')]"
+				tooltip = "SEND_GOLD_DECREASE_1_TT"
+			}
+			
+			# Amount display
+			widget = {
+				size = { 90 45 }
+				
+				background = {
+					using = Background_Area_Dark
+					margin = { 5 5 }
+				}
+				
+				text_single = {
+					parentanchor = center
+					text = "[GetPlayer.MakeScope.Var('send_gold_amount').GetValue|0]"
+					default_format = "#high;bold"
+					fontsize = 22
+					align = center
+				}
+			}
+			
+			# +1 button
+			button_standard = {
+				size = { 45 40 }
+				text = "+1"
+				default_format = "#high"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_increase_1')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_increase_1_valid')]"
+				tooltip = "SEND_GOLD_INCREASE_1_TT"
+			}
+			
+			# +10 button
+			button_standard = {
+				size = { 50 40 }
+				text = "+10"
+				default_format = "#high"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_increase_10')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_increase_10_valid')]"
+				tooltip = "SEND_GOLD_INCREASE_10_TT"
+			}
+			
+			# +100 button
+			button_standard = {
+				size = { 55 40 }
+				text = "+100"
+				default_format = "#high"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_increase_100')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_increase_100_valid')]"
+				tooltip = "SEND_GOLD_INCREASE_100_TT"
+			}
+		}
+		
+		# Min/Max buttons
+		hbox = {
+			spacing = 15
+			margin_top = 5
+			
+			button_standard = {
+				size = { 80 32 }
+				text = "SEND_GOLD_MIN"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_set_min')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_set_min_valid')]"
+				tooltip = "SEND_GOLD_MIN_TT"
+			}
+			
+			button_standard = {
+				size = { 80 32 }
+				text = "SEND_GOLD_MAX"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_set_max')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_set_max_valid')]"
+				tooltip = "SEND_GOLD_MAX_TT"
+			}
+		}
+		
+		spacer = {
+			size = { 10 15 }
+		}
+		
+		divider_light = {
+			layoutpolicy_horizontal = expanding
+		}
+		
+		spacer = {
+			size = { 10 5 }
+		}
+		
+		# Action buttons
+		hbox = {
+			spacing = 20
+			
+			button_standard = {
+				size = { 120 45 }
+				text = "SEND_GOLD_CANCEL"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_cancel')]"
+			}
+			
+			button_primary = {
+				size = { 120 45 }
+				text = "SEND_GOLD_CONFIRM"
+				onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_confirm')]"
+				enabled = "[GetScriptedGui('send_gold_window').IsValid(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'is_confirm_valid')]"
+			}
+		}
+	}
+	
+	# Close button
+	button_close = {
+		onclick = "[GetScriptedGui('send_gold_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End, 'effect_cancel')]"
+	}
+}

@@ -1,0 +1,67 @@
+# Send Gold to Player Interaction
+# Opens a custom GUI to select the exact amount
+
+send_gold_to_player_interaction = {
+	category = interaction_category_diplomacy
+	desc = send_gold_to_player_interaction_desc
+	icon = gold
+	
+	# Show based on game rule setting
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		# Check game rule for AI targeting
+		trigger_if = {
+			limit = {
+				has_game_rule = send_gold_ai_rule_players_only
+			}
+			scope:recipient = {
+				is_ai = no
+			}
+		}
+		# If allow_ai rule is set, show for everyone
+	}
+	
+	# Must have at least 1 gold
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			gold >= 1
+		}
+	}
+	
+	# Auto accept - the actual transfer happens via the scripted GUI
+	auto_accept = yes
+	
+	on_accept = {
+		# Initialize the gold amount variable
+		scope:actor = {
+			if = {
+				limit = {
+					NOT = { exists = var:send_gold_amount }
+				}
+				set_variable = {
+					name = send_gold_amount
+					value = 50
+				}
+			}
+			# Clamp to available gold if needed
+			if = {
+				limit = {
+					var:send_gold_amount > gold
+				}
+				set_variable = {
+					name = send_gold_amount
+					value = gold
+				}
+			}
+			# Store recipient for the GUI
+			set_variable = {
+				name = send_gold_recipient
+				value = scope:recipient
+			}
+		}
+	}
+	
+	ai_will_do = {
+		base = 0
+	}
+}

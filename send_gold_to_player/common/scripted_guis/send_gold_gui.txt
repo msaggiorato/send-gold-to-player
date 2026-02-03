@@ -1,0 +1,245 @@
+# Scripted GUI for Send Gold amount selection
+
+send_gold_window = {
+	scope = character
+	
+	# Initialize amount if not set
+	is_shown = {
+		exists = var:send_gold_recipient
+	}
+	
+	# Decrease by 100
+	effect_decrease_100 = {
+		if = {
+			limit = {
+				var:send_gold_amount >= 101
+			}
+			change_variable = {
+				name = send_gold_amount
+				add = -100
+			}
+		}
+		else = {
+			set_variable = {
+				name = send_gold_amount
+				value = 1
+			}
+		}
+	}
+	
+	is_decrease_100_valid = {
+		var:send_gold_amount > 1
+	}
+	
+	# Decrease by 10
+	effect_decrease_10 = {
+		if = {
+			limit = {
+				var:send_gold_amount >= 11
+			}
+			change_variable = {
+				name = send_gold_amount
+				add = -10
+			}
+		}
+		else = {
+			set_variable = {
+				name = send_gold_amount
+				value = 1
+			}
+		}
+	}
+	
+	is_decrease_10_valid = {
+		var:send_gold_amount > 1
+	}
+	
+	# Decrease by 1
+	effect_decrease_1 = {
+		if = {
+			limit = {
+				var:send_gold_amount >= 2
+			}
+			change_variable = {
+				name = send_gold_amount
+				add = -1
+			}
+		}
+	}
+	
+	is_decrease_1_valid = {
+		var:send_gold_amount > 1
+	}
+	
+	# Increase by 1
+	effect_increase_1 = {
+		if = {
+			limit = {
+				var:send_gold_amount < gold
+			}
+			change_variable = {
+				name = send_gold_amount
+				add = 1
+			}
+		}
+	}
+	
+	is_increase_1_valid = {
+		var:send_gold_amount < gold
+	}
+	
+	# Increase by 10
+	effect_increase_10 = {
+		if = {
+			limit = {
+				save_temporary_scope_value_as = {
+					name = temp_check
+					value = {
+						value = var:send_gold_amount
+						add = 10
+					}
+				}
+				gold >= scope:temp_check
+			}
+			change_variable = {
+				name = send_gold_amount
+				add = 10
+			}
+		}
+		else = {
+			set_variable = {
+				name = send_gold_amount
+				value = gold
+			}
+		}
+	}
+	
+	is_increase_10_valid = {
+		var:send_gold_amount < gold
+	}
+	
+	# Increase by 100
+	effect_increase_100 = {
+		if = {
+			limit = {
+				save_temporary_scope_value_as = {
+					name = temp_check
+					value = {
+						value = var:send_gold_amount
+						add = 100
+					}
+				}
+				gold >= scope:temp_check
+			}
+			change_variable = {
+				name = send_gold_amount
+				add = 100
+			}
+		}
+		else = {
+			set_variable = {
+				name = send_gold_amount
+				value = gold
+			}
+		}
+	}
+	
+	is_increase_100_valid = {
+		var:send_gold_amount < gold
+	}
+	
+	# Set to minimum (1)
+	effect_set_min = {
+		set_variable = {
+			name = send_gold_amount
+			value = 1
+		}
+	}
+	
+	is_set_min_valid = {
+		var:send_gold_amount > 1
+	}
+	
+	# Set to maximum (all gold)
+	effect_set_max = {
+		set_variable = {
+			name = send_gold_amount
+			value = gold
+		}
+	}
+	
+	is_set_max_valid = {
+		var:send_gold_amount < gold
+	}
+	
+	# Confirm - send the gold
+	effect_confirm = {
+		# Clamp amount to available gold
+		if = {
+			limit = {
+				var:send_gold_amount > gold
+			}
+			set_variable = {
+				name = send_gold_amount
+				value = gold
+			}
+		}
+		
+		# Ensure minimum of 1
+		if = {
+			limit = {
+				var:send_gold_amount < 1
+			}
+			set_variable = {
+				name = send_gold_amount
+				value = 1
+			}
+		}
+		
+		# Store the recipient
+		save_scope_as = sender
+		var:send_gold_recipient = {
+			save_scope_as = recipient
+		}
+		
+		# Transfer the gold
+		remove_short_term_gold = var:send_gold_amount
+		
+		scope:recipient = {
+			add_gold = scope:sender.var:send_gold_amount
+		}
+		
+		# Notify sender
+		send_interface_toast = {
+			title = send_gold_sent_toast
+			left_icon = scope:recipient
+			custom_tooltip = send_gold_sent_tt
+		}
+		
+		# Notify recipient
+		scope:recipient = {
+			send_interface_toast = {
+				title = send_gold_received_toast
+				left_icon = scope:sender
+				custom_tooltip = send_gold_received_tt
+			}
+		}
+		
+		# Clean up variables
+		remove_variable = send_gold_amount
+		remove_variable = send_gold_recipient
+	}
+	
+	is_confirm_valid = {
+		exists = var:send_gold_amount
+		exists = var:send_gold_recipient
+		var:send_gold_amount >= 1
+		gold >= var:send_gold_amount
+	}
+	
+	# Cancel - close without sending
+	effect_cancel = {
+		remove_variable = send_gold_amount
+		remove_variable = send_gold_recipient
+	}
+}
