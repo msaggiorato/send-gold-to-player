@@ -1,12 +1,99 @@
 ﻿send_gold_to_player_interaction = {
 	category = interaction_category_friendly
+	desc = send_gold_to_player_interaction_desc
+	
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+	}
+	
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			gold >= 1
+		}
+	}
+	
+	send_option = {
+		flag = send_1
+		localization = send_gold_option_1
+	}
+	send_option = {
+		flag = send_5
+		localization = send_gold_option_5
+	}
+	send_option = {
+		flag = send_10
+		localization = send_gold_option_10
+	}
+	send_option = {
+		flag = send_25
+		localization = send_gold_option_25
+	}
+	send_option = {
+		flag = send_50
+		localization = send_gold_option_50
+	}
+	send_option = {
+		flag = send_100
+		localization = send_gold_option_100
+	}
+	send_option = {
+		flag = send_250
+		localization = send_gold_option_250
+	}
+	send_option = {
+		flag = send_500
+		localization = send_gold_option_500
+	}
+	send_option = {
+		flag = send_1000
+		localization = send_gold_option_1000
+	}
 	
 	on_accept = {
-		scope:actor = {
-			remove_short_term_gold = 100
+		if = {
+			limit = { scope:send_1 = yes }
+			scope:actor = { remove_short_term_gold = 1 }
+			scope:recipient = { add_gold = 1 }
 		}
-		scope:recipient = {
-			add_gold = 100
+		else_if = {
+			limit = { scope:send_5 = yes }
+			scope:actor = { remove_short_term_gold = 5 }
+			scope:recipient = { add_gold = 5 }
+		}
+		else_if = {
+			limit = { scope:send_10 = yes }
+			scope:actor = { remove_short_term_gold = 10 }
+			scope:recipient = { add_gold = 10 }
+		}
+		else_if = {
+			limit = { scope:send_25 = yes }
+			scope:actor = { remove_short_term_gold = 25 }
+			scope:recipient = { add_gold = 25 }
+		}
+		else_if = {
+			limit = { scope:send_50 = yes }
+			scope:actor = { remove_short_term_gold = 50 }
+			scope:recipient = { add_gold = 50 }
+		}
+		else_if = {
+			limit = { scope:send_100 = yes }
+			scope:actor = { remove_short_term_gold = 100 }
+			scope:recipient = { add_gold = 100 }
+		}
+		else_if = {
+			limit = { scope:send_250 = yes }
+			scope:actor = { remove_short_term_gold = 250 }
+			scope:recipient = { add_gold = 250 }
+		}
+		else_if = {
+			limit = { scope:send_500 = yes }
+			scope:actor = { remove_short_term_gold = 500 }
+			scope:recipient = { add_gold = 500 }
+		}
+		else_if = {
+			limit = { scope:send_1000 = yes }
+			scope:actor = { remove_short_term_gold = 1000 }
+			scope:recipient = { add_gold = 1000 }
 		}
 	}
 	
