@@ -13,44 +13,71 @@
 	}
 	
 	# ==========================================
-	# Opciones de cantidad base
+	# Opciones de cantidad base (con validación)
 	# ==========================================
 	send_option = {
 		flag = send_1
 		localization = send_gold_option_1
+		is_valid = {
+			scope:actor = { gold >= 1 }
+		}
 	}
 	send_option = {
 		flag = send_5
 		localization = send_gold_option_5
+		is_valid = {
+			scope:actor = { gold >= 5 }
+		}
 	}
 	send_option = {
 		flag = send_10
 		localization = send_gold_option_10
 		is_default = yes
+		is_valid = {
+			scope:actor = { gold >= 10 }
+		}
 	}
 	send_option = {
 		flag = send_25
 		localization = send_gold_option_25
+		is_valid = {
+			scope:actor = { gold >= 25 }
+		}
 	}
 	send_option = {
 		flag = send_50
 		localization = send_gold_option_50
+		is_valid = {
+			scope:actor = { gold >= 50 }
+		}
 	}
 	send_option = {
 		flag = send_100
 		localization = send_gold_option_100
+		is_valid = {
+			scope:actor = { gold >= 100 }
+		}
 	}
 	send_option = {
 		flag = send_250
 		localization = send_gold_option_250
+		is_valid = {
+			scope:actor = { gold >= 250 }
+		}
 	}
 	send_option = {
 		flag = send_500
 		localization = send_gold_option_500
+		is_valid = {
+			scope:actor = { gold >= 500 }
+		}
 	}
 	send_option = {
 		flag = send_1000
 		localization = send_gold_option_1000
+		is_valid = {
+			scope:actor = { gold >= 1000 }
+		}
 	}
 	
 	# ==========================================
@@ -67,6 +94,130 @@
 		is_valid = {
 			scope:recipient = {
 				gold < 0
+			}
+		}
+	}
+	
+	# ==========================================
+	# Validación final antes de ejecutar
+	# Verifica que el actor tenga suficiente oro para el total
+	# ==========================================
+	is_valid = {
+		trigger_if = {
+			limit = { scope:send_1 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 1
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 1
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_5 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 5
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 5
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_10 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 10
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 10
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_25 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 25
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 25
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_50 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 50
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 50
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_100 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 100
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 100
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_250 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 250
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 250
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_500 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 500
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 500
+			}
+		}
+		trigger_else_if = {
+			limit = { scope:send_1000 = yes }
+			trigger_if = {
+				limit = { scope:cover_debt = yes }
+				scope:actor.gold >= {
+					value = 1000
+					subtract = scope:recipient.gold
+				}
+			}
+			trigger_else = {
+				scope:actor.gold >= 1000
 			}
 		}
 	}
