@@ -1,7 +1,7 @@
-﻿version="3.0.0"
+﻿version="2.1.0"
 tags={
 	"Gameplay"
 	"Utilities"
 }
-name="Send Gold to Player - Custom UI"
+name="Send Gold to Player"
 supported_version="1.17.*"
