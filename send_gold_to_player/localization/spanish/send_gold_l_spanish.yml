@@ -12,3 +12,6 @@
  send_gold_option_250:0 "250 Oro"
  send_gold_option_500:0 "500 Oro"
  send_gold_option_1000:0 "1000 Oro"
+ send_gold_event_title:0 "¡Oro Recibido!"
+ send_gold_event_desc:0 "[scope:gold_sender.GetNameNoTooltipNoFormat] te ha enviado [scope:gold_amount|0] de oro."
+ send_gold_event_accept:0 "¡Excelente!"

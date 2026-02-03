@@ -1,0 +1,21 @@
+﻿namespace = send_gold
+
+# Notificación para el receptor
+send_gold.0001 = {
+	type = character_event
+	title = send_gold_event_title
+	desc = send_gold_event_desc
+	
+	theme = stewardship_wealth_focus
+	
+	left_portrait = {
+		character = scope:gold_sender
+		animation = personality_bold
+	}
+	
+	immediate = {}
+	
+	option = {
+		name = send_gold_event_accept
+	}
+}
