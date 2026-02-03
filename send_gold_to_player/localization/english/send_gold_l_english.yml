@@ -10,3 +10,5 @@
  send_gold_option_250:0 "Send 250 Gold"
  send_gold_option_500:0 "Send 500 Gold"
  send_gold_option_1000:0 "Send 1000 Gold"
+ send_gold_no_cover_debt:0 "Do NOT cover recipient's debt"
+ send_gold_cover_debt:0 "Also cover recipient's debt"

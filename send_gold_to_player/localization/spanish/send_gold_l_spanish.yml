@@ -10,3 +10,5 @@
  send_gold_option_250:0 "Enviar 250 Oro"
  send_gold_option_500:0 "Enviar 500 Oro"
  send_gold_option_1000:0 "Enviar 1000 Oro"
+ send_gold_no_cover_debt:0 "NO cubrir la deuda del receptor"
+ send_gold_cover_debt:0 "Cubrir también la deuda del receptor"

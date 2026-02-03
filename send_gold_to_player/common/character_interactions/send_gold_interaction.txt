@@ -12,7 +12,9 @@
 		}
 	}
 	
-	# Opciones de cantidad
+	# ==========================================
+	# Opciones de cantidad base
+	# ==========================================
 	send_option = {
 		flag = send_1
 		localization = send_gold_option_1
@@ -24,6 +26,7 @@
 	send_option = {
 		flag = send_10
 		localization = send_gold_option_10
+		is_default = yes
 	}
 	send_option = {
 		flag = send_25
@@ -50,51 +53,141 @@
 		localization = send_gold_option_1000
 	}
 	
+	# ==========================================
+	# Checkbox: Cubrir deudas del receptor
+	# ==========================================
+	send_option = {
+		flag = no_cover_debt
+		localization = send_gold_no_cover_debt
+		is_default = yes
+	}
+	send_option = {
+		flag = cover_debt
+		localization = send_gold_cover_debt
+		is_valid = {
+			scope:recipient = {
+				gold < 0
+			}
+		}
+	}
+	
 	on_accept = {
+		# Calcular deuda del receptor (valor positivo)
+		save_scope_value_as = {
+			name = debt_amount
+			value = {
+				if = {
+					limit = {
+						scope:recipient = { gold < 0 }
+						scope:cover_debt = yes
+					}
+					value = scope:recipient.gold
+					multiply = -1
+				}
+				else = {
+					value = 0
+				}
+			}
+		}
+		
+		# Enviar segun la cantidad seleccionada + deuda si aplica
 		if = {
 			limit = { scope:send_1 = yes }
-			scope:actor = { remove_short_term_gold = 1 }
-			scope:recipient = { add_gold = 1 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 1
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_5 = yes }
-			scope:actor = { remove_short_term_gold = 5 }
-			scope:recipient = { add_gold = 5 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 5
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_10 = yes }
-			scope:actor = { remove_short_term_gold = 10 }
-			scope:recipient = { add_gold = 10 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 10
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_25 = yes }
-			scope:actor = { remove_short_term_gold = 25 }
-			scope:recipient = { add_gold = 25 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 25
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_50 = yes }
-			scope:actor = { remove_short_term_gold = 50 }
-			scope:recipient = { add_gold = 50 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 50
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_100 = yes }
-			scope:actor = { remove_short_term_gold = 100 }
-			scope:recipient = { add_gold = 100 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 100
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_250 = yes }
-			scope:actor = { remove_short_term_gold = 250 }
-			scope:recipient = { add_gold = 250 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 250
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_500 = yes }
-			scope:actor = { remove_short_term_gold = 500 }
-			scope:recipient = { add_gold = 500 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 500
+					add = scope:debt_amount
+				}
+			}
 		}
 		else_if = {
 			limit = { scope:send_1000 = yes }
-			scope:actor = { remove_short_term_gold = 1000 }
-			scope:recipient = { add_gold = 1000 }
+			save_scope_value_as = {
+				name = total_amount
+				value = {
+					value = 1000
+					add = scope:debt_amount
+				}
+			}
+		}
+		
+		# Ejecutar la transferencia
+		scope:actor = {
+			remove_short_term_gold = scope:total_amount
+		}
+		scope:recipient = {
+			add_gold = scope:total_amount
 		}
 	}
 	
