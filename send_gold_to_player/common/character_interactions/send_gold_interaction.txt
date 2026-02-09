@@ -112,12 +112,16 @@ send_gold_to_player_interaction = {
 		scope:recipient = { add_gold = scope:gold_amount }
 		
 		# Notificar al receptor
-		scope:actor = { save_scope_as = gold_sender }
 		scope:recipient = {
-			trigger_event = send_gold.0001
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = send_gold_event_title
+				desc = send_gold_event_desc
+				left_icon = scope:actor
+			}
 		}
 	}
-	
+
 	auto_accept = yes
 }
 
@@ -299,11 +303,15 @@ send_gold_cover_debt_interaction = {
 		scope:recipient = { add_gold = scope:gold_amount }
 		
 		# Notificar al receptor
-		scope:actor = { save_scope_as = gold_sender }
 		scope:recipient = {
-			trigger_event = send_gold.0001
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = send_gold_event_title
+				desc = send_gold_event_desc
+				left_icon = scope:actor
+			}
 		}
 	}
-	
+
 	auto_accept = yes
 }

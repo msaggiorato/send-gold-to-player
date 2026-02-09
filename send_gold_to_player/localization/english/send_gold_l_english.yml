@@ -13,5 +13,4 @@
  send_gold_option_500:0 "500 Gold"
  send_gold_option_1000:0 "1000 Gold"
  send_gold_event_title:0 "Gold Received!"
- send_gold_event_desc:0 "[scope:gold_sender.GetNameNoTooltipNoFormat] has sent you [scope:gold_amount|0] gold."
- send_gold_event_accept:0 "Excellent!"
+ send_gold_event_desc:0 "[scope:actor.GetNameNoTooltipNoFormat] has sent you [scope:gold_amount|0] gold."
