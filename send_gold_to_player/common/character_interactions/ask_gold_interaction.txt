@@ -1,0 +1,379 @@
+﻿# ==========================================
+# INTERACTION 1: Ask for Gold (normal)
+# ==========================================
+ask_gold_interaction = {
+	category = interaction_category_friendly
+	desc = ask_gold_interaction_desc
+	icon = icon_gold
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			gold >= 1
+		}
+	}
+
+	send_option = {
+		flag = send_1
+		localization = send_gold_option_1
+		is_valid = { scope:recipient = { gold >= 1 } }
+	}
+	send_option = {
+		flag = send_5
+		localization = send_gold_option_5
+		is_valid = { scope:recipient = { gold >= 5 } }
+	}
+	send_option = {
+		flag = send_10
+		localization = send_gold_option_10
+		is_default = yes
+		is_valid = { scope:recipient = { gold >= 10 } }
+	}
+	send_option = {
+		flag = send_25
+		localization = send_gold_option_25
+		is_valid = { scope:recipient = { gold >= 25 } }
+	}
+	send_option = {
+		flag = send_50
+		localization = send_gold_option_50
+		is_valid = { scope:recipient = { gold >= 50 } }
+	}
+	send_option = {
+		flag = send_100
+		localization = send_gold_option_100
+		is_valid = { scope:recipient = { gold >= 100 } }
+	}
+	send_option = {
+		flag = send_250
+		localization = send_gold_option_250
+		is_valid = { scope:recipient = { gold >= 250 } }
+	}
+	send_option = {
+		flag = send_500
+		localization = send_gold_option_500
+		is_valid = { scope:recipient = { gold >= 500 } }
+	}
+	send_option = {
+		flag = send_1000
+		localization = send_gold_option_1000
+		is_valid = { scope:recipient = { gold >= 1000 } }
+	}
+
+	on_accept = {
+		# Determinar monto
+		save_scope_value_as = {
+			name = gold_amount
+			value = {
+				if = {
+					limit = { scope:send_1 = yes }
+					add = 1
+				}
+				else_if = {
+					limit = { scope:send_5 = yes }
+					add = 5
+				}
+				else_if = {
+					limit = { scope:send_10 = yes }
+					add = 10
+				}
+				else_if = {
+					limit = { scope:send_25 = yes }
+					add = 25
+				}
+				else_if = {
+					limit = { scope:send_50 = yes }
+					add = 50
+				}
+				else_if = {
+					limit = { scope:send_100 = yes }
+					add = 100
+				}
+				else_if = {
+					limit = { scope:send_250 = yes }
+					add = 250
+				}
+				else_if = {
+					limit = { scope:send_500 = yes }
+					add = 500
+				}
+				else_if = {
+					limit = { scope:send_1000 = yes }
+					add = 1000
+				}
+			}
+		}
+
+		# Transferir
+		scope:recipient = { remove_short_term_gold = scope:gold_amount }
+		scope:actor = { add_gold = scope:gold_amount }
+
+		# Notificar al solicitante
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = send_gold_event_title
+				desc = ask_gold_accepted_desc
+				left_icon = scope:recipient
+			}
+		}
+
+		# Notificar al receptor
+		scope:recipient = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = ask_gold_sent_title
+				desc = ask_gold_sent_desc
+				left_icon = scope:actor
+			}
+		}
+	}
+
+	on_decline = {
+		# Notificar al solicitante
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = ask_gold_declined_title
+				desc = ask_gold_declined_desc
+				left_icon = scope:recipient
+			}
+		}
+	}
+
+	ai_accept = {
+		base = -25
+		opinion_modifier = {
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 0.5
+		}
+	}
+
+	ai_will_do = { base = 0 }
+}
+
+# ==========================================
+# INTERACTION 2: Ask for Gold + Cover Debt
+# ==========================================
+ask_gold_cover_debt_interaction = {
+	category = interaction_category_friendly
+	desc = ask_gold_cover_debt_interaction_desc
+	icon = icon_gold
+
+	is_shown = {
+		NOT = { scope:actor = scope:recipient }
+		scope:actor = { gold < 0 }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			gold >= 1
+		}
+	}
+
+	send_option = {
+		flag = send_1
+		localization = send_gold_option_1
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 1
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_5
+		localization = send_gold_option_5
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 5
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_10
+		localization = send_gold_option_10
+		is_default = yes
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 10
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_25
+		localization = send_gold_option_25
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 25
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_50
+		localization = send_gold_option_50
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 50
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_100
+		localization = send_gold_option_100
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 100
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_250
+		localization = send_gold_option_250
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 250
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_500
+		localization = send_gold_option_500
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 500
+				subtract = scope:actor.gold
+			}
+		}
+	}
+	send_option = {
+		flag = send_1000
+		localization = send_gold_option_1000
+		is_valid = {
+			scope:recipient.gold >= {
+				value = 1000
+				subtract = scope:actor.gold
+			}
+		}
+	}
+
+	on_accept = {
+		# Calcular deuda (valor positivo)
+		save_scope_value_as = {
+			name = debt_amount
+			value = {
+				value = scope:actor.gold
+				multiply = -1
+			}
+		}
+
+		# Determinar monto base
+		save_scope_value_as = {
+			name = base_amount
+			value = {
+				if = {
+					limit = { scope:send_1 = yes }
+					add = 1
+				}
+				else_if = {
+					limit = { scope:send_5 = yes }
+					add = 5
+				}
+				else_if = {
+					limit = { scope:send_10 = yes }
+					add = 10
+				}
+				else_if = {
+					limit = { scope:send_25 = yes }
+					add = 25
+				}
+				else_if = {
+					limit = { scope:send_50 = yes }
+					add = 50
+				}
+				else_if = {
+					limit = { scope:send_100 = yes }
+					add = 100
+				}
+				else_if = {
+					limit = { scope:send_250 = yes }
+					add = 250
+				}
+				else_if = {
+					limit = { scope:send_500 = yes }
+					add = 500
+				}
+				else_if = {
+					limit = { scope:send_1000 = yes }
+					add = 1000
+				}
+			}
+		}
+
+		# Total = base + deuda
+		save_scope_value_as = {
+			name = gold_amount
+			value = {
+				value = scope:base_amount
+				add = scope:debt_amount
+			}
+		}
+
+		# Transferir
+		scope:recipient = { remove_short_term_gold = scope:gold_amount }
+		scope:actor = { add_gold = scope:gold_amount }
+
+		# Notificar al solicitante
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = send_gold_event_title
+				desc = ask_gold_accepted_desc
+				left_icon = scope:recipient
+			}
+		}
+
+		# Notificar al receptor
+		scope:recipient = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = ask_gold_sent_title
+				desc = ask_gold_sent_desc
+				left_icon = scope:actor
+			}
+		}
+	}
+
+	on_decline = {
+		# Notificar al solicitante
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = ask_gold_declined_title
+				desc = ask_gold_declined_desc
+				left_icon = scope:recipient
+			}
+		}
+	}
+
+	ai_accept = {
+		base = -25
+		opinion_modifier = {
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 0.5
+		}
+	}
+
+	ai_will_do = { base = 0 }
+}
