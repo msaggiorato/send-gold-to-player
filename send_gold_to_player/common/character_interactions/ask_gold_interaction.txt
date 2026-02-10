@@ -320,12 +320,13 @@ ask_gold_cover_debt_interaction = {
 			}
 		}
 
-		# Total = base + deuda
+		# Total = base + deuda (sin exceder el oro del receptor)
 		save_scope_value_as = {
 			name = gold_amount
 			value = {
 				value = scope:base_amount
 				add = scope:debt_amount
+				max = scope:recipient.gold
 			}
 		}
 
