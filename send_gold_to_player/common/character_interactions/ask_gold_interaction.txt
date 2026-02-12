@@ -1,4 +1,4 @@
-﻿# ==========================================
+# ==========================================
 # INTERACTION 1: Ask for Gold (normal)
 # ==========================================
 ask_gold_interaction = {
@@ -107,36 +107,33 @@ ask_gold_interaction = {
 			}
 		}
 
-		# Transferir
-		scope:recipient = { remove_short_term_gold = scope:gold_amount }
-		scope:actor = { add_gold = scope:gold_amount }
-
-		# Notificar al solicitante
+		# Notificar al solicitante y transferir
 		scope:actor = {
-			send_interface_toast = {
-				type = event_toast_effect_good
+			send_interface_message = {
+				type = event_generic_neutral_text
 				title = send_gold_event_title
 				desc = ask_gold_accepted_desc
 				left_icon = scope:recipient
+				add_gold = scope:gold_amount
 			}
 		}
 
-		# Notificar al receptor
+		# Notificar al receptor y cobrar
 		scope:recipient = {
-			send_interface_toast = {
-				type = event_toast_effect_good
+			send_interface_message = {
+				type = event_generic_neutral_text
 				title = ask_gold_sent_title
 				desc = ask_gold_sent_desc
 				left_icon = scope:actor
+				remove_short_term_gold = scope:gold_amount
 			}
 		}
 	}
 
 	on_decline = {
-		# Notificar al solicitante
 		scope:actor = {
-			send_interface_toast = {
-				type = event_toast_effect_bad
+			send_interface_message = {
+				type = event_generic_neutral_text
 				title = ask_gold_declined_title
 				desc = ask_gold_declined_desc
 				left_icon = scope:recipient
@@ -330,36 +327,33 @@ ask_gold_cover_debt_interaction = {
 			}
 		}
 
-		# Transferir
-		scope:recipient = { remove_short_term_gold = scope:gold_amount }
-		scope:actor = { add_gold = scope:gold_amount }
-
-		# Notificar al solicitante
+		# Notificar al solicitante y transferir
 		scope:actor = {
-			send_interface_toast = {
-				type = event_toast_effect_good
+			send_interface_message = {
+				type = event_generic_neutral_text
 				title = send_gold_event_title
 				desc = ask_gold_accepted_desc
 				left_icon = scope:recipient
+				add_gold = scope:gold_amount
 			}
 		}
 
-		# Notificar al receptor
+		# Notificar al receptor y cobrar
 		scope:recipient = {
-			send_interface_toast = {
-				type = event_toast_effect_good
+			send_interface_message = {
+				type = event_generic_neutral_text
 				title = ask_gold_sent_title
 				desc = ask_gold_sent_desc
 				left_icon = scope:actor
+				remove_short_term_gold = scope:gold_amount
 			}
 		}
 	}
 
 	on_decline = {
-		# Notificar al solicitante
 		scope:actor = {
-			send_interface_toast = {
-				type = event_toast_effect_bad
+			send_interface_message = {
+				type = event_generic_neutral_text
 				title = ask_gold_declined_title
 				desc = ask_gold_declined_desc
 				left_icon = scope:recipient
