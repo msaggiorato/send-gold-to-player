@@ -1,4 +1,4 @@
-# ==========================================
+﻿# ==========================================
 # INTERACTION 1: Send Gold (normal)
 # ==========================================
 send_gold_to_player_interaction = {
@@ -62,7 +62,9 @@ send_gold_to_player_interaction = {
 		localization = send_gold_option_1000
 		is_valid = { scope:actor = { gold >= 1000 } }
 	}
-	
+
+	send_options_exclusive = yes
+
 	on_accept = {
 		# Determinar monto
 		save_scope_value_as = {
@@ -111,7 +113,7 @@ send_gold_to_player_interaction = {
 		scope:actor = { remove_short_term_gold = scope:gold_amount }
 		scope:recipient = {
 			send_interface_message = {
-				type = event_generic_neutral_text
+				type = event_message_text_and_effect
 				title = send_gold_event_title
 				desc = send_gold_event_desc
 				left_icon = scope:actor
@@ -233,7 +235,9 @@ send_gold_cover_debt_interaction = {
 			}
 		}
 	}
-	
+
+	send_options_exclusive = yes
+
 	on_accept = {
 		# Calcular deuda (valor positivo)
 		save_scope_value_as = {
@@ -300,7 +304,7 @@ send_gold_cover_debt_interaction = {
 		scope:actor = { remove_short_term_gold = scope:gold_amount }
 		scope:recipient = {
 			send_interface_message = {
-				type = event_generic_neutral_text
+				type = event_message_text_and_effect
 				title = send_gold_event_title
 				desc = send_gold_event_desc
 				left_icon = scope:actor

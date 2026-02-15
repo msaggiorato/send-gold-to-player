@@ -1,10 +1,14 @@
-# ==========================================
+﻿# ==========================================
 # INTERACTION 1: Ask for Gold (normal)
 # ==========================================
 ask_gold_interaction = {
 	category = interaction_category_friendly
 	desc = ask_gold_interaction_desc
 	icon = icon_gold
+	greeting = positive
+	notification_text = ask_gold_notification_text
+	answer_accept_key = ask_gold_accept
+	answer_reject_key = ask_gold_reject
 
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
@@ -63,6 +67,8 @@ ask_gold_interaction = {
 		is_valid = { scope:recipient = { gold >= 1000 } }
 	}
 
+	send_options_exclusive = yes
+
 	on_accept = {
 		# Determinar monto
 		save_scope_value_as = {
@@ -110,7 +116,7 @@ ask_gold_interaction = {
 		# Notificar al solicitante y transferir
 		scope:actor = {
 			send_interface_message = {
-				type = event_generic_neutral_text
+				type = event_message_text_and_effect
 				title = send_gold_event_title
 				desc = ask_gold_accepted_desc
 				left_icon = scope:recipient
@@ -121,7 +127,7 @@ ask_gold_interaction = {
 		# Notificar al receptor y cobrar
 		scope:recipient = {
 			send_interface_message = {
-				type = event_generic_neutral_text
+				type = event_message_text_and_effect
 				title = ask_gold_sent_title
 				desc = ask_gold_sent_desc
 				left_icon = scope:actor
@@ -160,6 +166,10 @@ ask_gold_cover_debt_interaction = {
 	category = interaction_category_friendly
 	desc = ask_gold_cover_debt_interaction_desc
 	icon = icon_gold
+	greeting = positive
+	notification_text = ask_gold_notification_text
+	answer_accept_key = ask_gold_accept
+	answer_reject_key = ask_gold_reject
 
 	is_shown = {
 		NOT = { scope:actor = scope:recipient }
@@ -264,6 +274,8 @@ ask_gold_cover_debt_interaction = {
 		}
 	}
 
+	send_options_exclusive = yes
+
 	on_accept = {
 		# Calcular deuda (valor positivo)
 		save_scope_value_as = {
@@ -330,7 +342,7 @@ ask_gold_cover_debt_interaction = {
 		# Notificar al solicitante y transferir
 		scope:actor = {
 			send_interface_message = {
-				type = event_generic_neutral_text
+				type = event_message_text_and_effect
 				title = send_gold_event_title
 				desc = ask_gold_accepted_desc
 				left_icon = scope:recipient
@@ -341,7 +353,7 @@ ask_gold_cover_debt_interaction = {
 		# Notificar al receptor y cobrar
 		scope:recipient = {
 			send_interface_message = {
-				type = event_generic_neutral_text
+				type = event_message_text_and_effect
 				title = ask_gold_sent_title
 				desc = ask_gold_sent_desc
 				left_icon = scope:actor
