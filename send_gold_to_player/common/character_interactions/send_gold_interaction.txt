@@ -113,7 +113,7 @@ send_gold_to_player_interaction = {
 		scope:actor = { remove_short_term_gold = scope:gold_amount }
 		scope:recipient = {
 			send_interface_message = {
-				type = event_message_text_and_effect
+				type = event_generic_neutral_with_text
 				title = send_gold_event_title
 				desc = send_gold_event_desc
 				left_icon = scope:actor
@@ -304,7 +304,7 @@ send_gold_cover_debt_interaction = {
 		scope:actor = { remove_short_term_gold = scope:gold_amount }
 		scope:recipient = {
 			send_interface_message = {
-				type = event_message_text_and_effect
+				type = event_generic_neutral_with_text
 				title = send_gold_event_title
 				desc = send_gold_event_desc
 				left_icon = scope:actor

@@ -20,7 +20,7 @@
  ask_gold_cover_debt_interaction_desc:0 "Pedir oro a este personaje para cubrir tu deuda, dejándote con balance positivo."
  ask_gold_accepted_desc:0 "[scope:recipient.GetNameNoTooltipNoFormat] ha aceptado tu solicitud."
  ask_gold_sent_title:0 "Oro Enviado"
- ask_gold_sent_desc:0 "Has enviado oro a [scope:actor.GetNameNoTooltipNoFormat]."
+ ask_gold_sent_desc:0 "Has enviado el oro solicitado."
  ask_gold_declined_title:0 "Solicitud Rechazada"
  ask_gold_declined_desc:0 "[scope:recipient.GetNameNoTooltipNoFormat] ha rechazado tu solicitud de oro."
  ask_gold_notification_text:0 "Se te está pidiendo oro."

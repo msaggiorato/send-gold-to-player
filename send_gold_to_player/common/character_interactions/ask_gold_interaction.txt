@@ -116,7 +116,7 @@ ask_gold_interaction = {
 		# Notificar al solicitante y transferir
 		scope:actor = {
 			send_interface_message = {
-				type = event_message_text_and_effect
+				type = event_generic_neutral_with_text
 				title = send_gold_event_title
 				desc = ask_gold_accepted_desc
 				left_icon = scope:recipient
@@ -127,7 +127,7 @@ ask_gold_interaction = {
 		# Notificar al receptor y cobrar
 		scope:recipient = {
 			send_interface_message = {
-				type = event_message_text_and_effect
+				type = event_generic_neutral_with_text
 				title = ask_gold_sent_title
 				desc = ask_gold_sent_desc
 				left_icon = scope:actor
@@ -342,7 +342,7 @@ ask_gold_cover_debt_interaction = {
 		# Notificar al solicitante y transferir
 		scope:actor = {
 			send_interface_message = {
-				type = event_message_text_and_effect
+				type = event_generic_neutral_with_text
 				title = send_gold_event_title
 				desc = ask_gold_accepted_desc
 				left_icon = scope:recipient
@@ -353,7 +353,7 @@ ask_gold_cover_debt_interaction = {
 		# Notificar al receptor y cobrar
 		scope:recipient = {
 			send_interface_message = {
-				type = event_message_text_and_effect
+				type = event_generic_neutral_with_text
 				title = ask_gold_sent_title
 				desc = ask_gold_sent_desc
 				left_icon = scope:actor

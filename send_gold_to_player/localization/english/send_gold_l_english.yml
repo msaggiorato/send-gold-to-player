@@ -20,7 +20,7 @@
  ask_gold_cover_debt_interaction_desc:0 "Ask this character for gold to cover your debt, bringing you to a positive balance."
  ask_gold_accepted_desc:0 "[scope:recipient.GetNameNoTooltipNoFormat] has accepted your request."
  ask_gold_sent_title:0 "Gold Sent"
- ask_gold_sent_desc:0 "You sent gold to [scope:actor.GetNameNoTooltipNoFormat]."
+ ask_gold_sent_desc:0 "You sent gold as requested."
  ask_gold_declined_title:0 "Request Declined"
  ask_gold_declined_desc:0 "[scope:recipient.GetNameNoTooltipNoFormat] has declined your request for gold."
  ask_gold_notification_text:0 "Gold is being requested from you."
