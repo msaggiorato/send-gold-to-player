@@ -164,7 +164,7 @@ Per `effects.log`:
 |---|---|---|
 | `$EFFECT$` | Text description of effects (past tense) | effects.log |
 | `$DESC$` | Text from the `desc` field | effects.log |
-| `$DESCRIPTION$` | Full composed description output (seen in tooltip context) | _messages.info |
+| `$DESCRIPTION$` | Full composed description output (seen in tooltip context) | _messages.info (GUI-level, not in effects.log) |
 
 ### Message Type Definition (`common/messages/`)
 
@@ -207,6 +207,16 @@ event_gold_neutral = {
 | `event_gold_good` | money | good | Gold gained |
 | `event_gold_neutral` | money | neutral | Gold transferred |
 | `event_gold_bad` | money | bad | Gold lost |
+| **Toast variants** | | | |
+| `event_toast_effect_good` | generic_good_effect | good | Toast: effect only |
+| `event_toast_effect_neutral` | generic_neutral_effect | neutral | Toast: effect only |
+| `event_toast_effect_bad` | generic_bad_effect | bad | Toast: effect only |
+| `event_toast_text_good` | generic_good_effect | good | Toast: desc text only |
+| `event_toast_text_neutral` | generic_neutral_effect | neutral | Toast: desc text only |
+| `event_toast_text_bad` | generic_bad_effect | bad | Toast: desc text only |
+| `event_toast_text_and_effect_good` | generic_good_effect | good | Toast: desc + effect |
+| `event_toast_text_and_effect_neutral` | generic_neutral_effect | neutral | Toast: desc + effect |
+| `event_toast_text_and_effect_bad` | generic_bad_effect | bad | Toast: desc + effect |
 
 ### Desc Chaining (Multi-Line Descriptions)
 
@@ -247,7 +257,10 @@ send_interface_message = {
 | `pay_long_term_gold = { target = X gold = Y }` | Transfer gold to target (from "long term" first) |
 | `pay_reserved_gold = { target = X gold = Y }` | Transfer gold to target (from "reserved" first) |
 | `pay_war_chest_gold = { target = X gold = Y }` | Transfer gold to target (from "war chest" first) |
-| `pay_short_term_income = { target = X days/months/years = Y }` | Pay income-equivalent to target |
+| `pay_short_term_income = { target = X days/months/years = Y }` | Pay income-equivalent to target (from "short term") |
+| `pay_long_term_income = { target = X days/months/years = Y }` | Pay income-equivalent to target (from "long term") |
+| `pay_reserved_income = { target = X days/months/years = Y }` | Pay income-equivalent to target (from "reserved") |
+| `pay_war_chest_income = { target = X days/months/years = Y }` | Pay income-equivalent to target (from "war chest") |
 | `add_short_term_gold = X` | Add to "short term" AI budget (overflow to short term) |
 | `add_long_term_gold = X` | Add to "long term" AI budget (overflow to short term) |
 | `add_reserved_gold = X` | Add to "reserved" AI budget (overflow to short term) |
@@ -341,7 +354,7 @@ scope:actor = { remove_short_term_gold = 50 }
 
 ### Common Event Targets (Saved from Code)
 
-Key targets available in various contexts:
+Key targets available in various contexts (curated subset — see `event_targets.log` for 900+ targets):
 
 | Target | Description |
 |---|---|
@@ -421,7 +434,7 @@ is_shown = {
 is_valid_showing_failures_only = {
     scope:actor = { gold >= 1 }
     scope:recipient = {
-        is_busy_in_events_localised = yes
+        # is_busy_in_events_localised = yes   # used in vanilla but NOT in triggers.log — may be undocumented/internal
         NOT = { is_imprisoned_by = scope:actor }
     }
 }
