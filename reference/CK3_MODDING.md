@@ -486,7 +486,7 @@ ai_will_do = {
 ```yaml
 l_english:
  key:0 "Display text"
- key_with_var:0 "You received [scope:gold_amount|0] gold."
+ key_with_var:0 "You received [gold_amount|0] gold."
 ```
 
 - `:0` = version number (use 0 for mods)
@@ -495,18 +495,21 @@ l_english:
 
 ### Common Template Expressions
 
+**IMPORTANT**: In localization strings, do NOT use the `scope:` prefix. Use `[actor.GetName]`, NOT `[scope:actor.GetName]`. The `scope:` prefix is only for script code (triggers/effects).
+
 | Expression | Result |
 |---|---|
-| `[scope:actor.GetName]` | Character name with tooltip |
-| `[scope:actor.GetNameNoTooltip]` | Name without tooltip |
-| `[scope:actor.GetNameNoTooltipNoFormat]` | Plain name (no tooltip, no formatting) |
-| `[scope:actor.GetTitledFirstName]` | "King John" |
-| `[scope:actor.GetSheFhe]` | She/He (capitalized) |
-| `[scope:actor.GetHerHis]` | Her/His |
-| `[scope:actor.GetHerHim]` | Her/Him |
-| `[scope:gold_amount\|0]` | Number with 0 decimal places |
-| `[scope:gold_amount\|2]` | Number with 2 decimal places |
-| `[scope:gold_amount\|+=]` | Number with +/- prefix |
+| `[actor.GetName]` | Character name with tooltip |
+| `[actor.GetNameNoTooltip]` | Name without tooltip |
+| `[actor.GetFirstNameNoTooltip]` | First name without tooltip |
+| `[actor.GetTitledFirstName]` | "King John" |
+| `[actor.GetShortUIName]` | Short UI display name |
+| `[actor.GetSheFhe]` | She/He (capitalized) |
+| `[actor.GetHerHis]` | Her/His |
+| `[actor.GetHerHim]` | Her/Him |
+| `[gold_amount\|0]` | Number with 0 decimal places |
+| `[gold_amount\|2]` | Number with 2 decimal places |
+| `[gold_amount\|+=]` | Number with +/- prefix |
 | `#bold Text#!` | Bold text |
 | `#italic Text#!` | Italic text |
 | `@gold_icon!` | Inline gold icon |
@@ -529,7 +532,7 @@ scope:recipient = {
     send_interface_message = {
         type = event_generic_neutral_text
         title = my_notification_title
-        desc = my_notification_desc       # "[scope:actor.GetName] sent you gold"
+        desc = my_notification_desc       # loc: "[actor.GetName] sent you gold"
         left_icon = scope:actor
         add_gold = scope:gold_amount      # effect runs AND shows in message
     }
